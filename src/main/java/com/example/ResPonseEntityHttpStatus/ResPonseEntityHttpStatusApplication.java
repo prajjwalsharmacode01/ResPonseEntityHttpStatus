@@ -8,6 +8,7 @@ public class ResPonseEntityHttpStatusApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(ResPonseEntityHttpStatusApplication.class, args);
+		System.out.print(false);
 	}
 
 }
