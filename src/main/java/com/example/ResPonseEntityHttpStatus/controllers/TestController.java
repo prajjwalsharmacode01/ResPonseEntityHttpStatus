@@ -1,6 +1,8 @@
 package com.example.ResPonseEntityHttpStatus.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,12 +17,20 @@ public class TestController {
 	DataService dataService;
 
 	@GetMapping("/hello")
-	public String testHello() {
-		return "Hello";
+	public ResponseEntity<String> testHello() {
+		HttpHeaders headers = new HttpHeaders();
+		headers.add("Custom-Header", "value");
+		return new ResponseEntity<>("S", headers, HttpStatus.INTERNAL_SERVER_ERROR);
+              
+//		return "Hello";
 	}
 
 	@GetMapping("/getData")
 	public ResponseEntity<DataModel> getData() {
 		return dataService.getData();
 	}
+	
+//	return new ResponseEntity<>(data, headers, HttpStatus.OK);
+
 }
+
